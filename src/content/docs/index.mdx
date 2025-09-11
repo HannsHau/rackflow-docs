@@ -1,24 +1,22 @@
 ---
-title: Welcome to RackFlow Documentation
-description: Get started building your docs site with Starlight.
+title: RackFlow Documentation
+description: browser based warehouse simulation
 template: doc
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkButton, LinkCard } from '@astrojs/starlight/components';
 
-## Next steps
+Find user guides, tutorials, references and more.
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+	<LinkCard 
+		title="Tutorial" 
+		href="tutorials/firstsimulation/"
+		description="Start with your first running simulation within minutes.">
+	</LinkCard>
+	<LinkCard 
+		title="Reference" 
+		href="references/conveyor/"
+		description="Specification of the elements">
+	</LinkCard>
 </CardGrid>

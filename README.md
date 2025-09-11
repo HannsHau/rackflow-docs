@@ -1,16 +1,14 @@
-# Starlight Starter Kit: Basics
+# RackFlow Docs
+
+Simulation is hard. The documentation facilitates the use of RackFlow.
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
 ## 🚀 Project Structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+The RackFlow Docs are written in public. You are welcome to engage and improve. We use starlight and astro as framework.
+
+Basic structure:
 
 ```
 .
