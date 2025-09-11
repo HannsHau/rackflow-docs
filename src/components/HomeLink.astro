@@ -1,5 +1,5 @@
 ---
-const home = 'https://www.rackflow.app';
+const home = import.meta.env.PUBLIC_HOME_URL as string | undefined;
 ---
 
 <a href={home} class="home-link">
