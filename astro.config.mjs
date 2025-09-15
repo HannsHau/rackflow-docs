@@ -15,6 +15,13 @@ export default defineConfig({
         // Relative path to your custom CSS file
         './src/styles/custom.css',
       ],
+			head: [
+				// Inject runtime environment variables
+				{
+					tag: 'script',
+					attrs: { src: '/env.js' },
+				},
+			],
       components: {
         // Override the default `SocialIcons` component.
         SocialIcons: './src/components/HomeLink.astro',

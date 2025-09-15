@@ -12,9 +12,6 @@ RUN npm ci --only=production
 # Copy source code
 COPY . .
 
-ARG PUBLIC_HOME_URL
-ENV PUBLIC_HOME_URL=${PUBLIC_HOME_URL}
-
 # Build the static site
 RUN npm run build
 
@@ -23,6 +20,13 @@ FROM nginx:alpine
 
 # Copy built files to nginx
 COPY --from=build /app/dist /usr/share/nginx/html
+
+# Create startup script for injecting environment variables
+RUN echo '#!/bin/sh' > /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "window.ENV = {" > /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "  PUBLIC_HOME_URL: \"${PUBLIC_HOME_URL:-}\"" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "};" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    chmod +x /docker-entrypoint.d/10-inject-env.sh
 
 # Copy custom nginx config (optional)
 # COPY nginx.conf /etc/nginx/nginx.conf
