@@ -1,0 +1,13 @@
+---
+import PostHog from '../components/posthog.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+---
+<html>
+  <head>
+    <PostHog />
+  </head>
+  <body>
+    <ConsentBanner />
+    <slot />
+  </body>
+</html>

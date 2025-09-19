@@ -13,13 +13,21 @@ export default defineConfig({
       },
 			customCss: [
         // Relative path to your custom CSS file
-        './src/styles/custom.css',
+				'./src/styles/custom.css',
       ],
 			head: [
 				// Inject runtime environment variables
 				{
 					tag: 'script',
 					attrs: { src: '/env.js' },
+				},
+				{
+					tag: 'script',
+					attrs: { src: '/consent.js', defer: true },
+				},
+				{
+					tag: 'script',
+					attrs: { src: '/posthog.js', defer: true },
 				},
 			],
       components: {

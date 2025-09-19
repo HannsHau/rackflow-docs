@@ -23,9 +23,11 @@ COPY --from=build /app/dist /usr/share/nginx/html
 
 # Create startup script for injecting environment variables
 RUN echo '#!/bin/sh' > /docker-entrypoint.d/10-inject-env.sh && \
-    echo 'echo "window.ENV = {" > /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
-    echo 'echo "  PUBLIC_HOME_URL: \"${PUBLIC_HOME_URL:-}\"" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
-    echo 'echo "};" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "window.__RACKFLOW_ENV = Object.assign({}, window.__RACKFLOW_ENV || {}, {" > /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "  PUBLIC_HOME_URL: \"${PUBLIC_HOME_URL:-}\"," >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "  POSTHOG_KEY: \"${POSTHOG_KEY:-}\"," >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "  POSTHOG_HOST: \"${POSTHOG_HOST:-}\"" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
+    echo 'echo "});" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
     chmod +x /docker-entrypoint.d/10-inject-env.sh
 
 # Copy custom nginx config (optional)
