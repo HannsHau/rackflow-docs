@@ -14,7 +14,14 @@
     if(!hasConsent()) return;
     var env=(window.__RACKFLOW_ENV&&typeof window.__RACKFLOW_ENV==='object')?window.__RACKFLOW_ENV:{};
     var key=env.POSTHOG_KEY; var host=env.POSTHOG_HOST;
-    if(!key||!host) return;
+    if(!key||!host) {
+      // Wait for env.js to load if not available yet
+      if(!window.__RACKFLOW_ENV) {
+        setTimeout(init, 100);
+        return;
+      }
+      return;
+    }
     var hostname=(window.location&&window.location.hostname)||'';
     var isRackflow=/((^|\.)rackflow\.app$)/.test(hostname) || hostname==='localhost';
     // Initialize

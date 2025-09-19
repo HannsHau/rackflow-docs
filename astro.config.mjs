@@ -27,7 +27,7 @@ export default defineConfig({
 				},
 				{
 					tag: 'script',
-					attrs: { src: '/posthog.js', defer: true },
+					attrs: { src: '/posthog.js' },
 				},
 			],
       components: {
