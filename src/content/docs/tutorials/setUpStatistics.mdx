@@ -1,0 +1,57 @@
+---
+title: Set up Statistics
+description: Configure statistics to monitor throughput and utilization of conveyors and storage/retrieval machines (SRMs).
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Learn how to enable statistics and view charts in Simulation Mode.
+
+## Preparation
+
+<Steps>
+1. Log in at [Rackflow](https://app.rackflow.app/login)
+2. Use a model with conveyors, racks, and SRMs. Expand from [First Storage](/tutorials/firststorage/) 
+or your own model.
+</Steps>
+
+## Activate Statistics for SRMs
+
+<Steps>
+1. Select an SRM.
+2. Enable "Send statistic".
+3. Repeat for each SRM.
+</Steps>
+
+![activate SRM statistic](../../../assets/images/activateSRM.png)
+
+## Activate Statistics for Convevors
+
+<Steps>
+1. Select a conveyor.
+2. Enable "Send statistic".
+3. Repeat for each key conveyors.
+</Steps>
+
+![activate Conveyor statistic](../../../assets/images/activateConveyorStatistic.png)
+
+## Run Simulation and View Charts
+
+Switch to [Simulation Mode](/tutorial/firstSimulation/#enter-simulation-mode) and run for 
+a few minutes. Confirm statistics appear for configured devices.
+
+Charts appear minimized at the bottom; click the triangle to expand. 
+The left graph shows pallets per hour (calculated per minute). The right pie chart displays 
+SRM utilization; use the dropdown to switch devices or locations.
+
+![SRM state and pallet statistic](../../../assets/images/statistics.png)
+
+## Congratulations 🎉
+
+Your warehouse simulation now tracks statistics.
+
+
+
+
+
+

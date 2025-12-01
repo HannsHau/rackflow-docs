@@ -5,59 +5,93 @@ description: A tutorial with creators, srm, racks and storage search
 
 import { Steps } from '@astrojs/starlight/components';
 
-This Hands-On tutorial guides you though the steps to get your simulation running for the very first time. 
+Learn how to create loading units, build a conveyor layout with racks, and set up storage search.
 
-## Sign-Up
-
-Rackflow is a cloud based framework to simulate warehouses. There is no need to install something on your computer. However your need a Google-Account or an Email-Adress to sign up. 
-
+Preparation:
 <Steps> 
+1. Log In at [Rackflow](https://app.rackflow.app/login)
+2. Expand your model from [First Simulation](/tutorials/firstsimulation) or create a new one
+3. Save your progress after each step.
+</Steps>
 
-1. Go to [Sign-Up](https://app.rackflow.app/signup)
-2. Accept the [Terms](https://www.rackflow.app/terms) and the [Privacy Policy](https://www.rackflow.app/privacy)
-3. Choose to use your Google Account or Email for sign-up. 
-4. Optional: If you use Email, you will recieve a verifaction email. Open the email and click on the verification link.
+## Create Conveyor System
+
+Build a conveyor system with [Creators](/reference/creator), [Conveyors](/reference/conveyor) and [Links](/reference/linkingmode) between them. 
+The Creator generates loading units. Link arrows show direction; loading units currently stop at endpoints. 
+Later, connect these ends to racks using a storage and retrieval machine (SRM).
+
+![Tool Selection](../../../assets/images/conveyorSystemToolLegend.png)
+
+Copy the layout below or design your own.
+
+![Conveyor System](../../../assets/images/conveyorSystem.png)
+
+## Define Racks
+
+<Steps>
+1. Select the rack tool from the toolbar.
+2. Click on the plane to place it; the rack centers at the click position.
+3. Set storage places: columns for length, rows for height. Refine position 
+with X and Z coordinates (Y is fixed on the ground). Rotate by setting orientation to 90°. 
+4. Repeat steps 1-3 for additional racks.
+  
+</Steps>
+
+See [racks](/reference/rack) for details. Save explicitly using the disk icon.
+
+![Add Racks](../../../assets/images/addRacks.png)
+
+## Add Storage and Retrival Machines
+
+The [SRM](/reference/srm) moves along horizontal and vertical axes to place loading units in racks. 
+
+<Steps>
+1. Select SRM from the toolbar.
+2. Place it near the target racks and handover conveyor.
+3. Set speeds: 2 m/s for horizontal (travel) axis, 1 m/s for vertical (lift) axis.
+4. Switch to Linking Mode in the toolbar. Connect the final conveyor to the SRM, then the SRM to both racks. 
+5. Repeat for the second SRM. 
+</Steps>
+
+Save the progress.
+
+![Add SRM](../../../assets/images/addSRM.png)
+
+## Add Storage search
+
+Loading units need a target storage location to enter racks. 
+Configure storage search on the conveyor before the aisle.
+
+<Steps>
+1. Note rack IDs (e.g., 113 and 114 for the first aisle; yours may differ).
+2. Select the conveyor in front of the aisle. 
+3. Enable Storage Search and enter target rack IDs (e.g., 113, 114). 
+4. Repeat for the second aisle with its rack IDs.
 
 </Steps>
 
-After successfull log in RackFlow is in editor mode.
+Save again 💾
 
-![Rackflow Editor Mode](../../../assets/images/rackflowEditor.png)
+![Add get rack ids](../../../assets/images/rackIds.png)
 
-## Create a Model
+![Add storage search set up](../../../assets/images/storageSearchSetUp.png)
 
-A Model is the basis to run a simulation. It is a simplified version of the real warehouse. Every model needs at leased one creator and one destroyer to simulate movements.
+:::note[Actually no routing]
+Routing is not implemented, so units distribute randomly at junctions. Place storage search 
+after the last junction for the target racks.
+:::
 
-<Steps> 
+## Start and Test the Simulation
 
-1. Open via Filemenu the 'New' ![new model](../../../assets/images/new.png)
-2. Enter a name, for example 'first simulation'
-3. Now place some conveyor with the mouse inside the editor Creators are light gray and destroyers are dark gray.![conveyors](../../../assets/images/conveyor.png)
-The next picture has one creator, two normal conveyors, one horizontal conveyor and a destroyer.  ![example conveyors](../../../assets/images/exampleWithoutLinks.png) 
-4. Switch over to the Linking Mode![linking mode](../../../assets/images/linkingMode.png) to connect the elements and select each conveyor element in the direction of the material flow. Creator is the first element to select. ![example conveyors with links](../../../assets/images/exampleWithLinks.png) 
-5. Save the model with clicking on the floppydisc symbol (orange) at the top left corner![save](../../../assets/images/save.png) 
+Switch to [Simulation Mode](/tutorial/firstSimulation/#enter-simulation-mode) and run for 
+a few minutes. Verify each rack receives one loading unit.
 
-</Steps>
+![Check the model](../../../assets/images/testFirstStorage.png)
 
-Now your simulation model is ready and saved.
-
-## Enter Simulation Mode
-
-The Simulation Mode is controlled by the Simulation Panel in the down right corner.![Simulation Panel](../../../assets/images/simulationPanel.png) 
-
-<Steps> 
-
-1. Switch the Simulation Mode on. The switch becomes blue and the connection links dissaper visually
-2. Press Start
-3. Optional: Pause to pause the simulation
-3. Optional: Reset to start again from simulation time zero. Loading units will disappear.
-
-</Steps>
 
 ## Congratulations 🎉
 
-Thats all you need to do to create your own simlation.
-![Result](../../../assets/images/result.gif) 
+Your warehouse is now loading.
 
 
 
