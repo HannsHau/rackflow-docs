@@ -1,6 +1,6 @@
 # RackFlow Docs
 
-Simulation is hard. The documentation facilitates the use of RackFlow.
+Simulation is hard. The documentation facilitates the use of RackFlow. 
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 

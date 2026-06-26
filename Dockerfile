@@ -3,25 +3,24 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
+RUN npm ci
 
-# Install dependencies
-RUN npm ci --only=production
-
-# Copy source code
 COPY . .
 
-# Build the static site
+ARG GIT_SHA=dev
+ARG PLATFORM_VERSION=unknown
+ENV GIT_SHA=$GIT_SHA
+ENV PLATFORM_VERSION=$PLATFORM_VERSION
+RUN node scripts/generate-version.js
+
 RUN npm run build
 
-# Production stage - serve with nginx
 FROM nginx:alpine
 
-# Copy built files to nginx
 COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create startup script for injecting environment variables
 RUN echo '#!/bin/sh' > /docker-entrypoint.d/10-inject-env.sh && \
     echo 'echo "window.__RACKFLOW_ENV = Object.assign({}, window.__RACKFLOW_ENV || {}, {" > /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
     echo 'echo "  PUBLIC_HOME_URL: \"${PUBLIC_HOME_URL:-}\"," >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
@@ -30,10 +29,6 @@ RUN echo '#!/bin/sh' > /docker-entrypoint.d/10-inject-env.sh && \
     echo 'echo "});" >> /usr/share/nginx/html/env.js' >> /docker-entrypoint.d/10-inject-env.sh && \
     chmod +x /docker-entrypoint.d/10-inject-env.sh
 
-# Copy custom nginx config (optional)
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]

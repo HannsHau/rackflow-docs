@@ -1,0 +1,83 @@
+name: Promote Preview
+
+# Runs only after a successful GHCR push from build-docs.yml.
+# Single task: move the `preview` tag onto the image that was just built.
+
+on:
+  workflow_run:
+    workflows: ["Build, Test and Push Docs"]
+    types: [completed]
+    branches: [main]
+
+  workflow_dispatch:
+    inputs:
+      source_tag:
+        description: "optional: promote main-abc1234 (default: latest)"
+        required: false
+        type: string
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  PREVIEW_TAG: preview
+  RAILWAY_SERVICE: docs
+  RAILWAY_ENVIRONMENT: preview
+
+jobs:
+  tag-preview:
+    name: Promote newest image to `preview`
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    if: >
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success') ||
+      github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Resolve source and target image
+        id: image
+        run: |
+          IMAGE_REPO=$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
+          BASE="${{ env.REGISTRY }}/${IMAGE_REPO}"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.source_tag }}" ]; then
+            SOURCE_TAG="${{ github.event.inputs.source_tag }}"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SOURCE_TAG="latest"
+          else
+            SHA="${{ github.event.workflow_run.head_sha }}"
+            SOURCE_TAG="main-${SHA:0:7}"
+          fi
+
+          echo "source=${BASE}:${SOURCE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "Promoting ${BASE}:${SOURCE_TAG} -> tag '${{ env.PREVIEW_TAG }}'"
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up crane
+        uses: imjasonh/setup-crane@v0.4
+
+      - name: Add `preview` tag to existing image
+        run: |
+          crane tag "${{ steps.image.outputs.source }}" "${{ env.PREVIEW_TAG }}"
+
+      - name: Redeploy Railway preview
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT: rackflow
+        run: |
+          npm install -g @railway/cli@5.23.0
+          railway redeploy -s "${{ env.RAILWAY_SERVICE }}" -e "${{ env.RAILWAY_ENVIRONMENT }}" -y
+
+      - name: Summary
+        run: |
+          echo "### Preview tag updated" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Source:** \`${{ steps.image.outputs.source }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Now also tagged:** \`${{ env.PREVIEW_TAG }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Railway:** redeployed \`${{ env.RAILWAY_ENVIRONMENT }}\` / \`${{ env.RAILWAY_SERVICE }}\`" >> "$GITHUB_STEP_SUMMARY"
