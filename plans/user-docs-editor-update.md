@@ -93,7 +93,7 @@ Each step should be deployable on its own. Run `npm run build` in `docs/` before
 
 ---
 
-### Step 2 — Editor controls reference (camera + modes)
+### Step 2 — Editor controls reference (camera + modes) ✅ Done 2026-07-03
 
 **Goal:** One page users can bookmark for navigation.
 
@@ -124,7 +124,7 @@ Each step should be deployable on its own. Run `npm run build` in `docs/` before
 
 ---
 
-### Step 3 — Selection reference
+### Step 3 — Selection reference ✅ Done 2026-07-03
 
 **Goal:** Document click, shift, marquee, multi-select.
 

@@ -40,6 +40,10 @@ export default defineConfig({
 						autogenerate: { directory: 'tutorials' },
 				},
 				{
+					label: 'Editor',
+					autogenerate: { directory: 'editor' },
+				},
+				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},

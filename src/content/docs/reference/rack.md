@@ -9,7 +9,7 @@ The Rack stores loading units. All storage locations share the same length, widt
 
 The rack’s Position is specified as (X, Bottom Y, Z). This represents the rack’s center point projected to its base elevation; Bottom Y is the elevation of the rack’s bottom. A Bottom Y of 0.0 places the rack on the floor. Orientation rotates the rack around the vertical axis: 0° aligns north to south, and 90° aligns east to west.
 
-First, draw a rack. Then select it to open the Rack parameters panel on the right side. As you edit values, the rack updates in real time. Racks created later inherit most values, except Position, which is set by where you click in the editor.
+First, place a rack. Select a single rack to edit parameters in the panel ([right-tap](/editor/controls/#device-parameters)). Racks placed later inherit most values from the last rack, except position, which comes from the click on the floor grid.
 
 ![Rack schematic drawing](../../../assets/images/rack.png)
 
