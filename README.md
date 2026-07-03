@@ -2,6 +2,8 @@
 
 Simulation is hard. The documentation facilitates the use of RackFlow. 🧑‍💻
 
+**Writing rules:** [WRITING.md](./WRITING.md) — required reading before editing user-facing pages.
+
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
 ## 🚀 Project Structure
