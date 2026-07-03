@@ -36,14 +36,6 @@ Drag on **empty** canvas (no device under the pointer at press) to draw a dashed
 
 The box uses **screen space**, not the floor grid. Devices at the same floor position but different heights can be selected independently — only devices the box covers on screen are included.
 
-### Conflicts
-
-| Situation | Result |
-| --------- | ------ |
-| Press on a device, then drag | Move that device (not marquee) |
-| Press inside group bounds with 2+ selected, then drag | Move entire selection |
-| Drag under 4 px on empty canvas | Treated as click empty (clears selection) |
-
 ## Multi-select group
 
 With two or more devices selected:
