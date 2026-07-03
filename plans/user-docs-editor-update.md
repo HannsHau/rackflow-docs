@@ -144,7 +144,7 @@ Each step should be deployable on its own. Run `npm run build` in `docs/` before
 
 ---
 
-### Step 4 — Move reference
+### Step 4 — Move reference ✅ Done 2026-07-03
 
 **Goal:** Mouse drag + keyboard nudge on the correct axes.
 
@@ -163,7 +163,7 @@ Each step should be deployable on its own. Run `npm run build` in `docs/` before
 
 ---
 
-### Step 5 — Undo, copy, paste & delete reference
+### Step 5 — Undo, copy, paste & delete reference ✅ Done 2026-07-03
 
 **Goal:** Edit history and clipboard in one place.
 

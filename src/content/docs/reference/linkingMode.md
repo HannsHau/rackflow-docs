@@ -27,7 +27,7 @@ Check the active source before clicking a target. To set a different source, cli
 
 ### Undo a link
 
-Each link is one edit. **⌘/Ctrl+Z** removes the last link added.
+Each link is one edit. **⌘/Ctrl+Z** removes the last link added — see [Edit history](/editor/edit-history/).
 
 ## Exit
 

@@ -42,7 +42,7 @@ With two or more devices selected:
 
 - Each device shows a blue floor highlight.
 - A dashed blue outline encloses the group on the floor.
-- Drag **inside** the group outline to move all selected devices together.
+- Drag **inside** the group outline to move all selected devices together — see [Move](/editor/move/).
 
 ## Parameters panel
 
@@ -64,3 +64,5 @@ With two or more devices selected:
 
 - [Editor controls](/editor/controls/)
 - [Delete Mode](/reference/deletemode/) — delete all selected with **Delete** / **Backspace**
+- [Move](/editor/move/)
+- [Edit history](/editor/edit-history/)

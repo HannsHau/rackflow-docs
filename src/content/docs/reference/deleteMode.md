@@ -12,7 +12,7 @@ Delete removes **conveyors** and **racks** from your model. **Links** between de
 1. Select one or more devices (click, Shift+click, or drag a selection box on the canvas).
 2. Press **Delete** or **Backspace**.
 
-All selected conveyors and racks are removed in one step. Undo with **⌘/Ctrl+Z**.
+All selected conveyors and racks are removed in one step. Undo with **⌘/Ctrl+Z** — see [Edit history](/editor/edit-history/).
 
 Editor mode only; not while simulation is running; not when focus is in a text field.
 

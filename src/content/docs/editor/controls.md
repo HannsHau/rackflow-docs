@@ -60,5 +60,7 @@ Exit placement or linking with **Escape**, another toolbar tool, or the same lin
 ## See also
 
 - [Selection](/editor/selection/)
+- [Move](/editor/move/)
+- [Edit history](/editor/edit-history/)
 - [Delete Mode](/reference/deletemode/)
 - [Linking Mode](/reference/linkingmode/)
