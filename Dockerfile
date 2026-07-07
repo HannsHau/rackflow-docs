@@ -1,5 +1,5 @@
 # Dockerfile
-FROM node:18-alpine AS build
+FROM node:24-alpine AS build
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN node scripts/generate-version.js
 
 RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:stable-alpine-slim
 
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
