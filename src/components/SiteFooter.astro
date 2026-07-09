@@ -1,0 +1,54 @@
+---
+import { HOME_URL, BLOG_URL, DOCS_URL, demoUrl } from '../lib/urls';
+import logo from '../assets/logo.svg';
+
+const currentYear = new Date().getFullYear();
+---
+
+<div class="rackflow-site-footer">
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href={HOME_URL} class="footer-logo">
+            <img src={logo.src} alt="RackFlow" class="logo-image" width="34" height="34" />
+            <span class="logo-text">RackFlow</span>
+          </a>
+          <p>
+            Simulate conveyor layouts and material flow in your browser. Spot bottlenecks before they delay go-live.
+          </p>
+        </div>
+        <div class="footer-sections">
+          <div class="footer-section">
+            <h3 class="footer-section-title">Product</h3>
+            <div class="footer-links">
+              <a href={`${HOME_URL}/#product-section`} class="footer-link">Product</a>
+              <a href={BLOG_URL} class="footer-link">Blog</a>
+              <a href={DOCS_URL} class="footer-link">Docs</a>
+              <a href={`${HOME_URL}/pricing`} class="footer-link">Pricing</a>
+              <a href={demoUrl()} class="footer-link">Request Demo</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-section-title">Legal</h3>
+            <div class="footer-links">
+              <a href={`${HOME_URL}/imprint`} class="footer-link">Imprint</a>
+              <a href={`${HOME_URL}/privacy`} class="footer-link">Privacy Policy</a>
+              <a href={`${HOME_URL}/terms`} class="footer-link">Terms of Service</a>
+              <a href={`${HOME_URL}/security`} class="footer-link">Security & Compliance</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-section-title">Contact</h3>
+            <div class="footer-links">
+              <a href="https://x.com/RackflowTeam" target="_blank" rel="noopener noreferrer" class="footer-link">X</a>
+              <a href="https://discord.gg/aj4vXyBm" target="_blank" rel="noopener noreferrer" class="footer-link">Discord</a>
+              <a href="mailto:team@rackflow.app" class="footer-link">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; {currentYear} RackFlow. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

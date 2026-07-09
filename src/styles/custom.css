@@ -140,3 +140,122 @@ span:where(.astro-m46x6ez3) {
   display: flex;
   gap: 8px;
 }
+
+/* RackFlow site footer (shared with blog/marketing) */
+.rackflow-site-footer {
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.rackflow-site-footer .site-footer {
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  padding: 2.5rem 0;
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.rackflow-site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.rackflow-site-footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.rackflow-site-footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 320px;
+}
+
+.rackflow-site-footer .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #1f2937;
+}
+
+.rackflow-site-footer .logo-image {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.rackflow-site-footer .logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.rackflow-site-footer .footer-brand p {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.rackflow-site-footer .footer-sections {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.rackflow-site-footer .footer-section-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.rackflow-site-footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rackflow-site-footer .footer-link {
+  color: #4b5563;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rackflow-site-footer .footer-link:hover {
+  color: #7b66ff;
+}
+
+.rackflow-site-footer .footer-copy {
+  color: #9ca3af;
+  font-size: 0.8125rem;
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .rackflow-site-footer .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .rackflow-site-footer .footer-brand {
+    max-width: none;
+  }
+
+  .rackflow-site-footer .footer-sections {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

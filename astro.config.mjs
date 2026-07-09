@@ -33,6 +33,9 @@ export default defineConfig({
       components: {
         // Override the default `SocialIcons` component.
         SocialIcons: './src/components/HomeLink.astro',
+        Footer: './src/components/Footer.astro',
+        PageFrame: './src/components/PageFrame.astro',
+        TwoColumnContent: './src/components/TwoColumnContent.astro',
       },
 			sidebar: [
 				{
