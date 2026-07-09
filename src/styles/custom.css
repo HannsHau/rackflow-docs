@@ -69,6 +69,52 @@ span:where(.astro-m46x6ez3) {
 	fill: var(--sl-color-gray-1) !important;
 }
 
+.sidebar-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sl-color-hairline-shade);
+}
+
+.sidebar-tools site-search button[data-open-modal] {
+  width: 100%;
+  max-width: none;
+}
+
+@media (max-width: 49.99rem) {
+  nav.sidebar starlight-menu-button button {
+    inset-inline-end: auto;
+    inset-inline-start: 1rem;
+    z-index: var(--sl-z-index-navbar);
+  }
+
+  html[data-has-toc] nav.sidebar starlight-menu-button button {
+    top: calc(var(--sl-nav-height) + (var(--sl-mobile-toc-height) - var(--sl-menu-button-size)) / 2);
+  }
+
+  html:not([data-has-toc]) nav.sidebar starlight-menu-button button {
+    top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
+  }
+
+  html[data-has-toc] mobile-starlight-toc summary {
+    padding-inline-start: calc(var(--sl-menu-button-size) + 1.25rem);
+  }
+}
+
+@media (min-width: 50rem) {
+  .sidebar-tools {
+    padding-inline: 0.25rem;
+  }
+}
+
+@media (min-width: 50rem) {
+  nav.sidebar starlight-menu-button {
+    display: none;
+  }
+}
+
 .pri-button {
   /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   background: #7b66ff;

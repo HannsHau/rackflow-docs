@@ -1,0 +1,128 @@
+<starlight-menu-button class="print:hidden">
+	<button
+		aria-expanded="false"
+		aria-label={Astro.locals.t('menuButton.accessibleLabel')}
+		aria-controls="starlight__sidebar"
+		class="sl-flex md:sl-hidden"
+	>
+		<svg class="open-menu" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+			<path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+		</svg>
+		<svg class="close-menu" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+			<path fill="currentColor" d="M6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6 5.6-5.6L17.6 5 12 10.6 6.4 5z" />
+		</svg>
+	</button>
+</starlight-menu-button>
+
+<script>
+	class StarlightMenuButton extends HTMLElement {
+		btn = this.querySelector('button')!;
+
+		constructor() {
+			super();
+			this.btn.addEventListener('click', () => this.toggleExpanded());
+
+			const parentNav = this.closest('nav');
+			if (parentNav) {
+				parentNav.addEventListener('keyup', (e) => this.closeOnEscape(e));
+			}
+		}
+
+		setExpanded(expanded: boolean) {
+			this.setAttribute('aria-expanded', String(expanded));
+			document.body.toggleAttribute('data-mobile-menu-expanded', expanded);
+		}
+
+		toggleExpanded() {
+			this.setExpanded(this.getAttribute('aria-expanded') !== 'true');
+		}
+
+		closeOnEscape(e: KeyboardEvent) {
+			if (e.code === 'Escape') {
+				this.setExpanded(false);
+				this.btn.focus();
+			}
+		}
+	}
+
+	customElements.define('starlight-menu-button', StarlightMenuButton);
+</script>
+
+<style>
+	@layer starlight.core {
+		button {
+			position: fixed;
+			z-index: var(--sl-z-index-navbar);
+			border: 0;
+			border-radius: 50%;
+			width: var(--sl-menu-button-size);
+			height: var(--sl-menu-button-size);
+			padding: 0.5rem;
+			background-color: var(--sl-color-white);
+			color: var(--sl-color-black);
+			box-shadow: var(--sl-shadow-md);
+			cursor: pointer;
+		}
+
+		@media (min-width: 50rem) {
+			button {
+				display: none;
+			}
+		}
+
+		[aria-expanded='true'] button {
+			background-color: var(--sl-color-gray-2);
+			box-shadow: none;
+		}
+
+		[aria-expanded='true'] button .open-menu {
+			display: none;
+		}
+
+		:not([aria-expanded='true']) button .close-menu {
+			display: none;
+		}
+
+		button svg {
+			display: block;
+		}
+
+		:global([data-theme='light']) button {
+			background-color: var(--sl-color-black);
+			color: var(--sl-color-white);
+		}
+
+		:global([data-theme='light']) [aria-expanded='true'] button {
+			background-color: var(--sl-color-gray-5);
+		}
+	}
+</style>
+
+<style is:global>
+	/* Unlayered so these beat scoped component defaults. */
+	@media (max-width: 49.99rem) {
+		html[data-has-toc] starlight-menu-button button {
+			inset-inline-end: auto;
+			inset-inline-start: 1rem;
+			top: calc(
+				var(--sl-nav-height) + (var(--sl-mobile-toc-height) - var(--sl-menu-button-size)) / 2
+			);
+		}
+
+		html:not([data-has-toc]) starlight-menu-button button {
+			inset-inline-end: var(--sl-nav-pad-x);
+			inset-inline-start: auto;
+			top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
+		}
+	}
+
+	[data-mobile-menu-expanded] {
+		overflow: hidden;
+	}
+
+	@media (min-width: 50rem) {
+		[data-mobile-menu-expanded] {
+			overflow: auto;
+		}
+	}
+</style>
