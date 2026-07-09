@@ -46,3 +46,5 @@ export const WEB_APP_URL = appUrl(
 );
 
 export const demoUrl = () => 'https://calendly.com/hannshaustein/demo';
+export const loginUrl = () => `${WEB_APP_URL}/login?source=docs`;
+export const signupUrl = () => `${WEB_APP_URL}/signup?source=docs`;

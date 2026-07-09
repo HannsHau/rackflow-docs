@@ -1,48 +1,57 @@
 ---
-import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
-import SiteTitle from 'virtual:starlight/components/SiteTitle';
-import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import {
+	HOME_URL,
+	BLOG_URL,
+	DOCS_URL,
+	demoUrl,
+	loginUrl,
+	signupUrl,
+} from '../lib/urls';
+import logo from '../assets/logo.svg';
 ---
 
-<div class="header">
-	<div class="title-wrapper sl-flex">
-		<SiteTitle />
-	</div>
-	<div class="sl-hidden md:sl-flex print:hidden right-group">
-		<div class="sl-flex social-icons">
-			<SocialIcons />
+<div class="rackflow-site-header">
+	<div class="rackflow-header-content">
+		<a href={HOME_URL} class="logo" aria-label="RackFlow home">
+			<img src={logo.src} alt="" class="logo-image" width="42" height="42" />
+			<span class="logo-text">RackFlow</span>
+		</a>
+		<input type="checkbox" id="rackflow-nav-toggle" class="nav-toggle" aria-hidden="true" />
+		<label for="rackflow-nav-toggle" class="nav-toggle-button" aria-label="Toggle navigation menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
+		<div class="header-right">
+			<nav class="nav" aria-label="Site">
+				<a href={`${HOME_URL}/#product-section`} class="nav-link">Product</a>
+				<a href={BLOG_URL} class="nav-link">Blog</a>
+				<a href={DOCS_URL} class="nav-link" aria-current="page">Docs</a>
+				<a href={`${HOME_URL}/pricing`} class="nav-link">Pricing</a>
+				<a href={demoUrl()} class="nav-link">Request&nbsp;Demo</a>
+			</nav>
+			<div class="header-actions">
+				<a href={loginUrl()} class="btn btn-ghost">Log In</a>
+				<a href={signupUrl()} class="btn btn-primary">Start Free</a>
+			</div>
 		</div>
-		<LanguageSelect />
 	</div>
 </div>
 
 <style>
 	@layer starlight.core {
-		.header {
+		.rackflow-site-header {
+			width: 100%;
+		}
+
+		.rackflow-header-content {
 			display: flex;
-			gap: var(--sl-nav-gap);
 			justify-content: space-between;
 			align-items: center;
-			height: 100%;
-		}
-
-		.title-wrapper {
-			overflow: clip;
-			padding: 0.25rem;
-			margin: -0.25rem;
-			min-width: 0;
-		}
-
-		.right-group,
-		.social-icons {
-			gap: 1rem;
-			align-items: center;
-		}
-
-		.social-icons::after {
-			content: '';
-			height: 2rem;
-			border-inline-end: 1px solid var(--sl-color-gray-5);
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 1.5rem;
+			width: 100%;
 		}
 	}
 </style>
