@@ -12,7 +12,7 @@ import logo from '../assets/logo.svg';
 
 <div class="rackflow-site-header">
 	<div class="rackflow-header-content">
-		<a href={HOME_URL} class="logo" aria-label="RackFlow home">
+		<a href={HOME_URL} class="logo" aria-label="RackFlow home" data-rf-link="home">
 			<img src={logo.src} alt="" class="logo-image" width="42" height="42" />
 			<span class="logo-text">RackFlow</span>
 		</a>
@@ -24,15 +24,15 @@ import logo from '../assets/logo.svg';
 		</label>
 		<div class="header-right">
 			<nav class="nav" aria-label="Site">
-				<a href={`${HOME_URL}/#product-section`} class="nav-link">Product</a>
-				<a href={BLOG_URL} class="nav-link">Blog</a>
-				<a href={DOCS_URL} class="nav-link" aria-current="page">Docs</a>
-				<a href={`${HOME_URL}/pricing`} class="nav-link">Pricing</a>
+				<a href={`${HOME_URL}/#product-section`} class="nav-link" data-rf-link="home-product">Product</a>
+				<a href={BLOG_URL} class="nav-link" data-rf-link="blog">Blog</a>
+				<a href={DOCS_URL} class="nav-link" aria-current="page" data-rf-link="docs">Docs</a>
+				<a href={`${HOME_URL}/pricing`} class="nav-link" data-rf-link="home-pricing">Pricing</a>
 				<a href={demoUrl()} class="nav-link">Request&nbsp;Demo</a>
 			</nav>
 			<div class="header-actions">
-				<a href={loginUrl()} class="btn btn-ghost">Log In</a>
-				<a href={signupUrl()} class="btn btn-primary">Start Free</a>
+				<a href={loginUrl()} class="btn btn-ghost" data-rf-link="app-login">Log In</a>
+				<a href={signupUrl()} class="btn btn-primary" data-rf-link="app-signup">Start Free</a>
 			</div>
 		</div>
 	</div>

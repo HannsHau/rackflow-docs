@@ -1,6 +1,6 @@
-// Cross-property URLs are resolved at build time for Astro pages. Use local
-// defaults in development/docker, and production defaults otherwise, while
-// still allowing explicit PUBLIC_* overrides per environment.
+// Cross-property URLs are baked at build time as fallbacks (SEO, no-JS). Nav
+// links with data-rf-link are rewritten at runtime from window.__RACKFLOW_ENV
+// (see public/apply-env-links.js and Dockerfile env injection).
 function normalizeUrl(url: string): string {
   if (!url.startsWith('http://') && !url.startsWith('https://')) {
     return `https://${url}`;

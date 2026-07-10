@@ -1,6 +1,6 @@
 # RackFlow Docs
 
-Simulation is hard. The documentation facilitates the use of RackFlow. 🧑‍💻
+Simulation is hard. The documentation facilitates the use of RackFlow. 
 
 **Writing rules:** [WRITING.md](./WRITING.md) — required reading before editing user-facing pages.
 
