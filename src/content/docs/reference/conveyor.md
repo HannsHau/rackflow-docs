@@ -18,7 +18,7 @@ The **Conveying Speed m/s** is the speed at which the conveyor hands a loading u
 >The time for one handover depends on the distance of the two connected elements. At the default speed, 1 m takes about ~3.3 seconds and 2 m about ~6.7 seconds. During the handover the conveyor stays occupied, so a larger distance directly reduces how many loading units per hour can pass (throughput).
 
 :::tip[Add connection]
-Each conveyor need connections which are added in the [Linking Mode](/reference/linkingmode).
+Each conveyor need connections which are added in the [Linking Mode](/reference/linkingmode/).
 :::
 
 The **Storage search** option lets the conveyor look for a free storage location for every arriving loading unit. You can list **Preferred racks** (for example `3,5,7`); otherwise any connected rack is used.
