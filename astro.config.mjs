@@ -7,6 +7,8 @@ import starlightLinksValidator from 'starlight-links-validator';
 // https://astro.build/config
 export default defineConfig({
   site: "https://docs.rackflow.app",
+  // Makes starlight-links-validator flag links without trailing slash
+  trailingSlash: "always",
   integrations: [
     starlight({
       title: "RackFlow Docs",

@@ -9,7 +9,7 @@ The Creator is a source position which will create loading units while the simul
 
 ![creator](../../../assets/images/creator_v1.png)
 
-A Creator holds one loading unit at a time and hands it over to the connected element (see [Conveyor](/reference/conveyor) for more details about attributes like position, orientation, conveying speed).
+A Creator holds one loading unit at a time and hands it over to the connected element (see [Conveyor](/reference/conveyor/) for more details about attributes like position, orientation, conveying speed).
 
 The **Creation timing** is the time between two new loading units. The default is **15 seconds**, and the time must be greater than 0.
 
