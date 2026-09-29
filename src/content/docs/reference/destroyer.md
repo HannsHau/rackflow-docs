@@ -11,7 +11,7 @@ The Destroyer is the end point of your conveyor system. It removes every loading
 
 Like a conveyor, a Destroyer holds one loading unit at a time. The next loading unit can only move onto the Destroyer after the previous one has been removed.
 
-The **Position (X, Y, Z)** is the centre of the Destroyer. Place it directly next to the element that feeds it: the handover takes longer the farther apart the two elements are (see [Conveyor](/reference/conveyor)).
+The **Position (X, Y, Z)** is the centre of the Destroyer. Place it directly next to the element that feeds it: the handover takes longer the farther apart the two elements are (see [Conveyor](/reference/conveyor/)).
 
 The **Removal timing** is how long a loading unit stays on the Destroyer before it is removed.
 - Default: 0 seconds. The loading unit is removed as soon as it arrives, and the Destroyer is free again immediately.

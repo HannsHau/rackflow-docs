@@ -3,7 +3,7 @@ title: Creator
 description: creates loading units
 ---
 
-![Creator icon](../../../assets/icons/creator_icon.png) 
+![Creator icon](../../../assets/icons/creator_icon.png)
 
 The Creator is a source position which will create loading units while the simulation is running.
 
@@ -12,6 +12,7 @@ The Creator is a source position which will create loading units while the simul
 A Creator holds one loading unit at a time and hands it over to the connected element (see [Conveyor](/reference/conveyor) for more details about attributes like position, orientation, conveying speed).
 
 The **Creation timing** is the time between two new loading units. The default is **15 seconds**, and the time must be greater than 0.
+
 - **Fixed timing**: a new loading unit every set number of seconds.
 - **Random timing**: the gaps vary around an average you enter.
 - **Triangular**: you enter the earliest, most frequent and latest gap.
@@ -22,6 +23,7 @@ If a new loading unit is due but the previous one has not been handed over yet, 
 :::
 
 ## Creator Parameters
+
 - Position (X, Y, Z)
 - Orientation (°)
 - Conveying Speed (m/s, default 0.3)
